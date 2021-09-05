@@ -45,7 +45,7 @@ class Product(models.Model):
         managed = False
         db_table = 'product'
         verbose_name = 'Product'
-        ordering = ['score', 'brand', 'title']
+        ordering = ['score', 'title', 'brand']
 
     def __str__(self):
         return self.title + " (" + self.brand + ")"
