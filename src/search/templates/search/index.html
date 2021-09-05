@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="{% static 'assets/favicon-32x32.png' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"></script>
+
+    <title>RIFA - Repairability Index for All (Search)</title>
+
+</head>
+<body>
+<div class="jumbotron vertical-center">
+    <div class="container">
+        {% block title %}
+            <img alt="RIFA" src="{% static 'assets/rifa-icon-192x192.png' %}" />
+            <h1> - Repairability Index for All</h1>
+        {% endblock title %}
+    </div>
+</div>
+<div class="search-container">
+    {% block content %}
+        <div id="product">
+            <div id="search-section">
+                <div class="input-group">
+                        <input id="my_search_input" onKeyUp="vueProducts.searchProducts()" type="text" v-model="search_form.search_input" class="form-control"
+                           placeholder="Search products...">
+                    <div class="input-group-append">
+                        <button onclick="vueProducts.searchProducts()" class="btn btn-outline-primary" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <br>
+                    <div id="products-list">
+
+                      <section v-if="errored">
+                        <p>Sorry, loading error.</p>
+                      </section>
+
+                      <section v-else>
+                        <div v-if="loading">Loading...</div>
+
+                        <div v-else>
+
+                            <table class="product_table">
+                                <thead>
+                                  <tr>
+                                    <th v-for="key in columns">
+                                      [[ key ]]
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr v-for="product in list_result" :key="product.product_id">
+                                      <td class="middle_td">
+                                        <img :src="getImgUrl(product.images)" width="72" />
+                                    </td>
+                                    <td>
+                                        [[ product.title ]]
+                                    </td>
+                                      <td>
+                                        [[ product.brand ]]
+                                    </td>
+                                      <td>
+                                        [[ product.category_name ]]
+                                    </td>
+                                      <td>
+                                        [[ product.scoringdate ]]
+                                    </td>
+                                      <td class="middle_td">
+                                          <img :src="displayScore(product.score)" width="100" />
+                                    </td>
+                                      <td class="middle_td">
+                                          <button @click="gotoScoringLink(product.scoringlink)" class="btn btn-outline-primary" type="button">
+                                            <i class="fa fa-rocket"></i>
+                                        </button>
+                                      </td>
+
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                        </div>
+
+                      </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock content %}
+</div>
+
+<script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+
+</body>
+</html>
