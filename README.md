@@ -25,7 +25,7 @@ Run the command to start the script for getting products from API and show the r
 
 Go to the page "http://127.0.0.1:8000/search/"
 
-![alt text](https://github.com/papeclem/Rifa/blob/ae40eadd797c75d6ebf915cfd5c48135050b7925/src/rifa/static/assets/pres-rifa.gif "This is RIFA!")
+![alt text](https://github.com/papeclem/Rifa-public/blob/c19a6a1607b85b22a793d0cdd04a1b9cd09d4c5e/src/rifa/static/assets/pres-rifa.gif "This is RIFA!")
 
 ## Built With
 * Python 3.9.6
