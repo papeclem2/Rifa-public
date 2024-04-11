@@ -1,5 +1,7 @@
 
 
+var ECOLO_GOUV = 'https://www.ecologie.gouv.fr/indice-reparabilite';
+
 var vueProducts =
     new Vue({
         delimiters: ['[[', ']]'],
@@ -41,7 +43,7 @@ var vueProducts =
                     if(scoringLink) {
                         window.open(scoringLink, '_blank');
                     }
-                    window.open('https://www.ecologie.gouv.fr/indice-reparabilite', '_blank');
+                    window.open(ECOLO_GOUV, '_blank');
                 },
                 displayScore: function (score) {
                     var path = "/static/assets/score/";
