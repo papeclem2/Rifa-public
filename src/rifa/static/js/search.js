@@ -1,6 +1,7 @@
 
 
 var ECOLO_GOUV = 'https://www.ecologie.gouv.fr/indice-reparabilite';
+var ICONS_REF = 'https://cdn.iconscout.com/icon/free/png-256/smartphone-1703329-1446727.png';
 
 var vueProducts =
     new Vue({
@@ -37,7 +38,7 @@ var vueProducts =
                     if(tableSrc && tableSrc.length > 0) {
                         return tableSrc[0];
                     }
-                    return 'https://cdn.iconscout.com/icon/free/png-256/smartphone-1703329-1446727.png'
+                    return ICONS_REF
                 },
                 gotoScoringLink: function (scoringLink) {
                     if(scoringLink) {
